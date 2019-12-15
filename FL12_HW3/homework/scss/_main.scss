@@ -1,0 +1,247 @@
+body {
+  @mixin displayFlex($justifyContent, $flexDirection) {
+    display: flex;
+    justify-content: $justifyContent;
+    flex-direction: $flexDirection;
+  }
+
+  @mixin font($family, $size, $weight) {
+    font-family: $family;
+    font-size: $size;
+    font-weight: $weight;
+  }
+
+  background: $mainBackground;
+  color: $mainColor;
+  margin: 0;
+  overflow-x: hidden;
+
+  .landing-logo {
+    @include displayFlex(right, row);
+
+    img {
+      padding-top: 2vh;
+      max-height: 5.3vh;
+      width: auto;
+    }
+
+    p {
+      @include displayFlex(center, column);
+      @include font($fresca, map-get($fontSize, normal), bold);
+      padding-left: 1vw;
+
+      span {
+        font-size: map-get($fontSize, xs-small);
+        text-align: center;
+      }
+    }
+  }
+
+  @mixin link ($size, $weight) {
+    @include font($hind, $size, $weight);
+    color: $linkColor;
+  }
+
+  @mixin button {
+    @include font($source, map-get($fontSize, small), bold);
+    color: $linkColor;
+    background-color: $buttonColor;
+    border: 0;
+    border-radius: 2px;
+    width: 7.8vw;
+    height: 5.3vh;
+    color: $buttonTextColor;
+  }
+
+  .header {
+    background-image: url($img);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: $headerHeight;
+    max-width: $fullWidth;
+    border-bottom-right-radius: 40%;
+
+    &-wrap {
+      padding-left: $fullWidth * 0.1;
+    }
+
+    &_heading {
+      @include font($source, map-get($fontSize, x-large), bold);
+      color: $headerColor;
+      margin: 0;
+      padding-top: 6vh;
+      width: 40%;
+      letter-spacing: 0.02em;
+      line-height: 1em;
+      background: $awesomeBackground;
+      background-repeat: no-repeat;
+    }
+
+    &_text {
+      @include font($fresca, map-get($fontSize, x-small), normal);
+      letter-spacing: 0.05em;
+      white-space: pre-line;
+      margin: 0;
+      padding-top: 5vh;
+      line-height: 1.6em;
+      max-width: 45%;
+      max-height: 15vh;
+    }
+
+    .header-wrap div:last-of-type {
+      padding-top: 7vh;
+      @include displayFlex(right, row);
+
+      button {
+        @include button;
+      }
+
+      a {
+        @include link(map-get($fontSize, small), bold);
+        padding-left: 8vw;
+        padding-top: 1vh;
+      }
+    }
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100vmin;
+    margin: 0;
+  }
+
+  .section_text {
+    @include font($source, map-get($fontSize, large), normal);
+    padding-left: 4vw;
+    line-height: 1em;
+    text-align: center;
+    background: $adventureBackground;
+    background-repeat: no-repeat;
+  }
+
+  .section_card_wrap {
+    @include displayFlex(center, column);
+    padding-left: 4vw;
+
+    .section_card {
+      @include displayFlex(center, row);
+      padding-left: 5vw;
+      width: 58vw;
+      height: 33vh;
+      background-color: $contentBackground;
+      padding: 2.3vh;
+      margin-bottom: 3vh;
+      border: 0;
+      border-radius: 4px;
+
+      .section_card_right_container {
+        padding-left: 5vw;
+        padding-right: 5vw;
+        padding-top: 3vh;
+        padding-bottom: 2vh;
+
+        .section_card_heading {
+          @include font($source, map-get($fontSize, normal), normal);
+          text-align: center;
+          color: $titleColor;
+        }
+
+        .section_card_text {
+          @include font($fresca, map-get($fontSize, x-small), normal);
+          padding-top: 2vh;
+          text-align: justify;
+          line-height: 1.7em;
+          letter-spacing: 0.05em;
+          color: $textColor;
+        }
+      }
+
+      .section_card_img {
+        border: 0;
+        border-radius: 5px;
+        width: 76vw;
+        height: 33vh;
+      }
+
+      a {
+        @include link(map-get($fontSize, x-small), bold);
+        padding-left: 10vw;
+        color: $textColor;
+      }
+    }
+  }
+
+  .section_banner {
+    @include displayFlex(right, row);
+    margin-top: 13vh;
+    margin-left: 4vw;
+    width: 64vw;
+    height: 16vh;
+    border: 0;
+    border-radius: 4px;
+    background-image: linear-gradient(to left, $rightGradient, $leftGradient);
+
+    .section_banner_text_wrap {
+      @include displayFlex(center, column);
+      width: 35vw;
+
+      .section_banner_heading {
+        @include font($source, map-get($fontSize, medium), bold);
+        margin: 0;
+        padding-left: 8.5vw;
+        background: $startBackground;
+        background-repeat: no-repeat;
+      }
+
+      .section_banner_text {
+        @include font($fresca, 0.87vw, normal);
+        padding-left: 8.5vw;
+        color: $textColor;
+      }
+    }
+
+    .section_banner_button {
+      margin-left: 13vw;
+      margin-top: 5.5vh;
+      @include button;
+    }
+  }
+
+  footer {
+    background-color: $contentBackground;
+    margin-top: -8vh;
+    height: 30vh;
+
+    .footer-wrap {
+      @include displayFlex(left, row);
+
+      .landing-logo {
+        @extend .landing-logo;
+        margin-top: 13.5vh;
+        margin-left: 10.5vw;
+
+        p {
+          color: $titleColor;
+        }
+      }
+
+      .footer_text {
+        width: 16vw;
+        margin-top: 15.5vh;
+        @include font($fresca, map-get($fontSize, x-small), normal);
+        margin-left: 25vw;
+        color: $textColor;
+      }
+
+      .footer-cr {
+        margin-top: 17vh;
+        @include font($fresca, map-get($fontSize, x-small), normal);
+        margin-left: 26vw;
+        color: $textColor;
+      }
+    }
+  }
+}
