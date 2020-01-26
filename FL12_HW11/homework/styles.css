@@ -1,0 +1,48 @@
+#root {
+    cursor: pointer;
+}
+
+.material-icons {
+    font-size: 18px;
+}
+
+.text:hover {
+    background-color: #eee;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul>li.empty {
+    padding-left: 0;
+    font-style: italic;
+}
+
+i {
+    color: #edbc0b;
+}
+
+.file i {
+    color: #bbb;
+}
+
+.folder>.text>i::before {
+    content: 'folder';
+}
+
+.folder.folder-opened>.text>i::before {
+    content: 'folder_open';
+}
+
+i::before {
+    content: 'insert_drive_file';
+}
+
+.folder>ul {
+    display: none;
+}
+
+.folder.folder-opened>ul {
+    display: block;
+}
